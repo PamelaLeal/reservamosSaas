@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+  
+<suite name="SmokeTesting" verbose="1" >
+  <test thread-count= "5" name="testCases" >
+    <classes>
+       <class name="StepDEfinations.TestRunner" />
+   	   <class name="StepDEfinations.TestRunner_AddProducts" />
+    </classes>
+  </test>
+ 
+</suite>

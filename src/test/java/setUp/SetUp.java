@@ -3,7 +3,6 @@ package setUp;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import io.cucumber.java.After;
 
 
 public class SetUp {
@@ -19,8 +18,5 @@ public class SetUp {
 		
 	}
 	
-	@After
-	public void closeDriver() {
-		driver.quit();
-	}
+	
 }
