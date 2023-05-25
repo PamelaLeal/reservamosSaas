@@ -10,16 +10,16 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import setUp.SetUp;
 
-public class AddProductSteps extends SetUp{
+public class AddProductSteps{
 
 	WebDriver driver;
 	AddProduct_PF addProduct;
-	
+	SetUp setUp = new SetUp();
 	
 	@Given("user is logged in")
 	public void user_is_logged_in() {
 	    // Write code here that turns the phrase above into concrete actions
-		addProduct= new AddProduct_PF(getDriver());
+		addProduct= new AddProduct_PF(setUp.getDriver());
 		addProduct.userLoggedin();
 	}
 	

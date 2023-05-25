@@ -8,16 +8,16 @@ import setUp.SetUp;
 
 import PageFactory.Login_PF;
 
-public class LoginSteps extends SetUp{
+public class LoginSteps{
 	
 	Login_PF login;
-	
+	SetUp setUp = new SetUp();
 	
 	@Given("user is on login page")
 	public void user_is_on_login_page() {
 	    // Write code here that turns the phrase above into concrete actions
 		
-		login= new Login_PF(getDriver());
+		login= new Login_PF(setUp.getDriver());
 	}
 
 	@When("user enters (.*) and (.*)$")
