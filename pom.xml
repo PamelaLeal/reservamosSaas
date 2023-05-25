@@ -1,19 +1,26 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        
+   	<modelVersion>4.0.0</modelVersion>
   <groupId>com.selenium</groupId>
   <artifactId>testing</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
   <properties>
 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 </properties>
+
   <dependencies>
+	  
 	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-java</artifactId>
     <version>4.9.1</version>
 </dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 <dependency>
     <groupId>org.testng</groupId>
@@ -22,8 +29,88 @@
     <scope>test</scope>
 </dependency>
 
+<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-java</artifactId>
+    <version>7.2.3</version>
+</dependency>
 
+
+<!-- https://mvnrepository.com/artifact/junit/junit -->
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.13.2</version>
+    <scope>test</scope>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-junit</artifactId>
+    <version>7.2.3</version>
+    <scope>test</scope>
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-selenide -->
+<dependency>
+    <groupId>io.qameta.allure</groupId>
+    <artifactId>allure-selenide</artifactId>
+    <version>2.22.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber7-jvm -->
+<dependency>
+    <groupId>io.qameta.allure</groupId>
+    <artifactId>allure-cucumber7-jvm</artifactId>
+    <version>2.17.3</version>
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-maven -->
+<dependency>
+    <groupId>io.qameta.allure</groupId>
+    <artifactId>allure-maven</artifactId>
+    <version>2.12.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+<dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjweaver</artifactId>
+    <version>1.9.19</version>
+    <scope>runtime</scope>
+</dependency>
 </dependencies>
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.20</version>
+            <configuration>
+                <argLine>
+                    -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.19/aspectjweaver-1.9.19.jar"
+                    -Dcucumber.options="--plugin io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
+                </argLine>
+                 <systemPropertyVariables>
+                    <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                    <allure.link.issue.pattern>https://example.org/browse/{}</allure.link.issue.pattern>
+                    <allure.link.tms.pattern>https://example.org/browse/{}</allure.link.tms.pattern>
+                </systemPropertyVariables>
+            </configuration>
+            <dependencies>
+                <dependency>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjweaver</artifactId>
+                    <version>1.9.19</version>
+                </dependency>
+            </dependencies>
+        </plugin>
+    </plugins>
+</build>
+
 </project>
 
 
