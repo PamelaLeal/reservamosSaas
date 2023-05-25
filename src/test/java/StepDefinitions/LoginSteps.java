@@ -17,7 +17,7 @@ public class LoginSteps{
 	public void user_is_on_login_page() {
 	    // Write code here that turns the phrase above into concrete actions
 		
-		login= new Login_PF(setUp.getDriver());
+		login= new Login_PF(setUp.getDriver("chrome"));
 	}
 
 	@When("user enters (.*) and (.*)$")
